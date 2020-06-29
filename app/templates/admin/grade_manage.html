@@ -1,0 +1,66 @@
+{% extends 'admin/manager.html' %}
+
+{% block app_content %}
+<div class="container mb-4"></div>
+
+
+<h1 class="display-6" align="center">成绩查询</h1>
+
+    <div class="container mb-4"></div>
+     </form>
+  <hr>
+    <form action="/search_grade" method="POST">
+    <div class="form-row">
+        <input type="number" name="StudentNum" class="form-control" placeholder="学号" required>
+      </div>
+          <div class="col">
+      <button type="submit" class="btn btn-block btn-dark mb-2 ">查询</button>
+
+      </div>
+
+  </form>
+
+  <form>
+                <form action="/grade_manage_return" method="POST">
+
+          <div class="col">
+      <button type="submit" class="btn btn-block  btn-warning ">返回</button>
+
+      </div>
+
+  </form>
+  <hr>
+    <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+        <tr>
+            <th class="lead">课程号</th>
+            <th class="lead">课程名</th>
+            <th class="lead">任课教师</th>
+            <th class="lead">学生学号</th>
+            <th class="lead">学生姓名</th>
+            <th class="lead">成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if tables %}
+        {% for table in tables %}
+        <tr>
+           <td class="lead">{{ table.CourseNum }}</td>
+           <td class="lead">{{ table.CourseName }}</td>
+            <td class="lead">{{ table.TeacherName }}</td>
+           <td class="lead">{{ table.StudentNum }}</td>
+           <td class="lead">{{ table.StudentName }}</td>
+{#           <td class="lead">{{ table.CourseDept }}</td>#}
+
+           {% if table.Grade %}
+           <td class="lead">{{ table.Grade }}</td>
+           {% else %}
+           <td class="lead">暂无</tr>
+           {% endif %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}
