@@ -1,5 +1,7 @@
-# NCUT-
+# NCUT
 NCUT软工实验五学生管理系统
+
+python3.7
 
 安装依赖pip install -r requirements.txt
 
